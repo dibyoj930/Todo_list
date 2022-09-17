@@ -1,0 +1,30 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+    <% newListItems.sort((a, b) => {%>
+     <% return b.p - a.p %>
+  <%}) %>
+    <% for(var i=0;i<newListItems.length;i++){%>
+      <form action="/delete" method="post">
+        <div class="item">
+          <input type="checkbox" name="checkbox" value="<%=newListItems[i]._id%>" onchange="this.form.submit()">
+          <p><%=i+1 %> 🖋  <%=  newListItems[i].name  %></p>
+        <p>Priority--<%= newListItems[i].p %></item></p>
+        </div>
+        <input type="hidden" value="<%=listTitle%>" name="listName"></input>
+      </form>
+    
+      <% } %>
+      
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="Whats your next task?" autocomplete="off">
+        <input type="number" name="priority" placeholder="Priority"  min="1" max="5">
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>
