@@ -20,7 +20,7 @@ var date = new Date();
   };
 var day=date.toLocaleDateString("en-US",op);
 
-mongoose.connect("mongodb+srv://Dibyo1:12345@cluster0.gtn3r9c.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv:XXXXX");
 
 const Todoschema = {
   name:String,
